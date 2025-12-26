@@ -1,2 +1,2 @@
 # TryHackMe-Learn
-Atividade guiadas para aprendizado.
+Atividade **guiadas** para aprendizado.
