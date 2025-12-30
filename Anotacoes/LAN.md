@@ -65,8 +65,29 @@ sendo responsável por enviar informações para outras redes (ex: LAN para WAN)
    - endereço de broadcast: usado para enviar dados a todos os dispositivos da sub-rede;
   ocorre quando todos os bits da parte de host estão em 1 (ex: .255 em redes /24)
 
-
-
+## ARP (Address Resolution Protocol)
+- IP: identifica logicamente um dispositivo (host) na rede
+- MAC: identifica fisicamente um dispositivo
+- problema: embora a comunicação na rede local utilize endereços MAC, os dispositivos inicialmente conhecem apenas o endereço IP do destino
+- o **ARP** atua descobrindo qual endereço MAC corresponde a um IP específico dentro da rede local
+   - cada dispositivo mantém os dados em cache, onde o IP e o MAC ficam armazenados
+      - caso essa informação não esteja armazenada no cache, é feita uma requisição em toda a rede (ARP Request)
+      - o dispositivo que possui o IP solicitado responde com seu endereço MAC (ARP Reply)
+      - essa resposta é armazenada no cache para futuras comunicaçõe
+    
+## DHCP (Dynamic Host Configuration Protocol)
+- é o protocolo responsável por atribuir automaticamente um IP aos dispositivos quando eles são conectados à rede
+   - a atribuição de IP pode ser feita manualmente, mas erros como endereços duplicados podem ocorrer
+      - chamado de IP estático, quando configurado manualmente
+         - usado em impressoras, roteadores, servidores
+        
+   - um servidor DHCP entrega IP's automaticamente
+      - **DHCP Discovery:** quando dispositivo entra na rede sem IP, envia uma mensagem para toda rede para confirmar se existe servidor DHCP
+      - **DHCP Offer:** o servidor DHCP responde oferecendo um IP disponível
+      - **DHCP Request:** responde confirmando que aceita o IP oferecido e informa à rede qual foi o DHCP escolhido
+      - **DHCP Ack:** confirma a concessão o IP e autoriza o dispositivo a começar a usar o endereço
+    
+   - esse IP concedido é "alugado" por um período; antes de expirar, o disposivo tenta renovar, se não der, volta ao pool do DHCP e o processo começa novamente no Discovery
 
 
 
