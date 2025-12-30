@@ -87,7 +87,7 @@ sendo responsável por enviar informações para outras redes (ex: LAN para WAN)
       - **DHCP Request:** responde confirmando que aceita o IP oferecido e informa à rede qual foi o DHCP escolhido
       - **DHCP Ack:** confirma a concessão o IP e autoriza o dispositivo a começar a usar o endereço
     
-   - esse IP concedido é "alugado" por um período; antes de expirar, o disposivo tenta renovar, se não der, volta ao pool do DHCP e o processo começa novamente no Discovery
+   - esse IP concedido é "alugado" por um período; antes de expirar, o disposivo tenta renovar, se não der, volta ao pool do DHCP e o processo reinicia no Discovery
 
 
 
