@@ -73,3 +73,12 @@ o restante não poderá ser utilizado)
 - OBS: não é a aplicação em si, mas a interface lógica de acesso à rede
    - ex de aplicações do usuário: navegador, serviços de e-mails
    - ex de protocolos: HTTP, HTTPS, DNS
+
+# RESUMO
+- Camada 7: aplicação - 🖥️
+- Camada 6: apresentação - ABC → ### | 🔒 → 🔓
+- Camada 5: sessão -  💬 ↔ 💬
+- Camada 4: transporte - 🍕 | TCP / UDP | 🚪
+- Camada 3: rede - 🌐 🕸️ 🧭 | 📦 IP
+- Camada 2: enlace de dados -  📦 → ✉️ + MAC
+- Camada 1: física - ⚡ → 0101                               
