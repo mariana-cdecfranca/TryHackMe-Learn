@@ -74,7 +74,7 @@ o restante não poderá ser utilizado)
    - ex de aplicações do usuário: navegador, serviços de e-mails
    - ex de protocolos: HTTP, HTTPS, DNS
 
-# RESUMO
+## Resumo
 - Camada 7: aplicação - 🖥️
 - Camada 6: apresentação - ABC → ### | 🔒 → 🔓
 - Camada 5: sessão -  💬 ↔ 💬
@@ -82,3 +82,75 @@ o restante não poderá ser utilizado)
 - Camada 3: rede - 🌐 🕸️ 🧭 | 📦 IP
 - Camada 2: enlace de dados -  📦 → ✉️ + MAC
 - Camada 1: física - ⚡ → 0101                               
+
+# Frames e Packets
+- são unidades de dados que transportam partes de uma informação/mensagem maior
+
+- **packet:** é um conjunto de dados da camada 3 (rede) que possui informações como endereço IP de origem, endereço IP de destino e carga útil (payload)
+- **frame:** é utilizado na camada 2 (enlace), encapsula o pacote e adiciona informações complementares, como **endereço MAC** de origem e destino
+- cabeçalhos comuns que os pacotes podem carregar (dependendo da camada):
+
+| cabeçalho | função |
+|----------|----------|
+| Time to life  | define o número máximo de saltos que um pacote pode dar na rede, evitando loops e sobrecarga caso não chegue ao host  |
+| CheckSum | verifica a integridade dos dados na camada em que está definido (IP ou TCP); se os valores forem diferentes, os dados são considerados corrompidos |
+| Source Address | endereço de origem (IP ou MAC, dependendo da camada) de onde o pacote é enviado |
+| Destination Address | endereço de destino (IP ou MAC, dependendo da camada) para onde o pacote deve ser enviado |
+
+
+## Protocolo TCP/IP e Three-way handshake
+- o protocolo TCP/IP consiste em 4 camadas:
+   - aplicação
+   - transporte
+   - internet
+   - interface de rede
+ 
+- o TCP, dentro da pilha TCP/IP, é baseado em conexão: estabelece conexão entre um cliente e o dispositivo servidor antes que os dados sejam enviados
+- os pacotes TCP contém várias informações (pacotes):
+   -  porta de origem: geralmente é uma porta efêmera (dinâmica, temporária), normalmente acima de 1024, disponível no momento da conexão
+       - valor escolhido aleatoriamente entre as portas 0 e 65535 que esteja dnão estejam em uso no momento
+    
+   -  porta de destino: valor representa o número da porta que o aplicativo/serviço está sendo executado no host remoto
+       - valor não é escolhido aleatoriamente 
+       - ex: servidor web em execução na porta 80
+    
+   -  IP de origem: endereço IP do dispositivo que está enviando o segmento
+   -  IP de destino: endereço IP do disposivo que está recebendo segmento
+   -  número de sequência: identifica a ordem dos dados enviados; o primeiro valor é gerado de forma aleatória no início da conexão 
+   -  número de confirmação (ACK): indica o próximo byte esperado pelo receptor
+   -  soma de verificação: garante a integridade do segmento TCP por meio de um cálculo matemático; se o valor não corresponder, o segmento é descartado
+   -  flag: determina como o segmento deve ser tratado durante o estabelecimento, manutenção ou encerramento da conexão
+ 
+### Three-way handshake
+- etapa 1 - **SYN**: mensagem SYN é o pacote inicial enviado durante o handshake, é usado para conectar e sincronizar dispositivos
+- etapa 2 - **SYN/ACK**: pacote enviado pelo receptor (servidor) para confirmar a tentativa de sincronização
+- etapa 3 - **ACK**: pacote de confirmação, pode ser enviado tanto pelo cliente quanto pelo servidor
+
+após essas três etapas, a conexão TCP está estabelecida
+
+- **DATA**: transmissão de dados ocorre após o handshake
+- **FIN**: encerramento controlado da conexão
+- **RST**: encerra a conexão de forma abrupta quando ocorre erro ou problema na comunicação
+
+## Protocolo UDP/IP
+- não exige conexão entre os dispositivos
+- não há confirmação de recebimento, ordenação ou retransmissão de dados, portanto, **não ocorre o Handshake**
+
+## Portas
+- número que varia entre 0 e 65535
+- cada porta indica qual serviço/aplicativo está se comunicando
+- quando um dispositivo envia ou recebe dados, esses dados passam por uma porta
+- para evitar confusão, cada serviço normalmente escuta uma porta padrão
+   - ex: web = porta 80 (HTTP) | web segura = 443 (HTTPS)
+      - dessa forma, os navegadores interpretam os dados da forma forma, mudando apenas a interface (Chrome, Mozilla, etc)
+    
+   - protocolos que possuem regras padrão:
+ 
+| Protocolo | Porta | Descrição |
+|---------|------|-----------|
+| FTP (File Transfer Protocol) | 21 | Protocolo utilizado para transferência de arquivos em um modelo cliente-servidor. |
+| SSH (Secure Shell) | 22 | Protocolo usado para acesso remoto seguro a sistemas por meio de interface de texto. |
+| HTTP (Hypertext Transfer Protocol) | 80 | Protocolo responsável pela comunicação da World Wide Web, usado para transferir páginas, imagens e vídeos. |
+| HTTPS (Hypertext Transfer Protocol Secure) | 443 | Versão segura do HTTP, que utiliza criptografia para proteger os dados transmitidos. |
+| SMB (Server Message Block) | 445 | Protocolo para compartilhamento de arquivos, pastas e dispositivos como impressoras em rede. |
+| RDP (Remote Desktop Protocol) | 3389 | Protocolo que permite acesso remoto a um computador por meio de interface gráfica. |
