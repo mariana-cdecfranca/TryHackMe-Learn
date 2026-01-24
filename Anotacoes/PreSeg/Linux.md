@@ -52,3 +52,36 @@
 - operador >>:
    - também permite direcionar a saída de um comando para um arquivo mas ao invés de sobrescrever o arquivo,
 o conteúdo é adicionado ao final **(concatena)**
+
+## SSH (Secure Shell)
+- permite executar comandos remotamente em outro dispositivo
+- estabelece conexão criptografada entre dispositivos
+   - todos os dados enviados entre os dispositivos são criptografados quando transmitidos por uma rede como a internet
+ 
+### Conectando
+- sintaxe para conexão:
+   - *ssh usuario@ip_do_servidor_remoto*
+
+## Flags e Switches
+- os argumentos usados nos comandos identificados por um hífen e uma palavra-chave específica são conhecidos como flags ou switches
+   - ex: *ls -a* ou *ls --all* -> esse comando lista também arquivos/pastas ocultos, identificados por "."
+ 
+- o comando *man* fornece a documentação do comando
+   - ex: *man ls*
+ 
+## Interação com o sistema de arquivos
+- **touch:** cria um arquivo
+- **mkdir (make directory):** cria uma pasta
+- **cp (copy):** copia um arquivo ou pasta
+   - ex:
+      - *cp nota1 nota2* -> copia conteúdo de nota1 para nota2
+- **mv (move):** mover um arquivo ou pasta
+   - além de mover, esse comando também pode renomear um arquivo
+      - ex:
+         - *mv nota1 nota2* -> agora *nota1* foi renomeado para nota2
+- **rm (remove):** remover um arquivo ou pasta
+   - ex:
+      - *rm teste.txt* -> arquivo pode ser removido
+      - *rm -R minhapasta* -> usar *-R* para remover uma pasta
+- **file:** determina o tipo de arquivo
+- 
