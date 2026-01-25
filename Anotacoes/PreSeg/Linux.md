@@ -74,7 +74,7 @@ o conteúdo é adicionado ao final **(concatena)**
 - **mkdir (make directory):** cria uma pasta
 - **cp (copy):** copia um arquivo ou pasta
    - ex:
-      - *cp nota1 nota2* -> copia conteúdo de nota1 para nota2
+      -c
 - **mv (move):** mover um arquivo ou pasta
    - além de mover, esse comando também pode renomear um arquivo
       - ex:
@@ -84,4 +84,53 @@ o conteúdo é adicionado ao final **(concatena)**
       - *rm teste.txt* -> arquivo pode ser removido
       - *rm -R minhapasta* -> usar *-R* para remover uma pasta
 - **file:** determina o tipo de arquivo
-- 
+   - ex: confirmar se arquivo nota é de fato txt
+      - *file nota* -> retorna o tipo do arquivo
+
+## Permissões de arquivos
+- usando o comando *ls* com as flags para listar as permissões
+   - *ls -l*: lista as permissões de arquivos em bytes
+   - *ls -lh*: lista as permissões do arquivo em formato legível
+
+ 
+- ações que um usuário pode executar:
+   - ler (r)
+   - escrever (w)
+   - executar (x)
+      - exemplo:
+         - *-rw-r--r-- 1 cmnatic cmnatic 0 Feb 19 10:37 file1*
+         - permissões:
+            - usuário (dono): rw = ler e escrever
+            - grupo: r = somente leitura
+            - outros: r = somente leitura
+          
+### Alternando usuários
+- **su usuario1:**
+   - troca o usuário para usuario1 mas mantém o ambiente do usuário atual, diretório inicial do usuário anterior
+- **su -l usuario1:**
+   - troca o usuário para usuario1, diretório inicial do usuario1 -> login completo
+ 
+### Permissões em formato numérico
+- considerando o exemplo: rwxrwxrwx
+   - ler (r): valor numérico = 4
+   - escrever (w): valor numérico = 2
+   - executar (x): valor numérico = 1
+      - primeiro grupo (usuário proprietário): rwx -> 4+2+1 = 7
+      - segundo grupo (grupo): rwx -> 4+2+1 = 7
+      - terceiro grupo (outros): rwx -> 4+2+1 = 7
+      - portanto: rwxrwxrwx = 7
+    
+- exemplos comuns
+
+| Simbólico   | Numérico | Significado                                                    |
+|------------|----------|-----------------------------------------------------------------|
+| rwxr-xr-x  | 755      | O proprietário pode fazer tudo, os outros podem ler e executar  |
+| rw-r--r--  | 644      | O dono sabe ler e escrever, os outros só sabem ler              |
+| rwx------  | 700      | Somente o proprietário tem acesso                               |
+
+
+- exemplo: *chmod 750 system_overview.txt*
+   - usuário proprietário: ler, escrever e executar
+   - grupo: ler e executar
+   - outros: sem acesso
+ 
