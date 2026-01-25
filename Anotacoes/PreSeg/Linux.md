@@ -134,3 +134,39 @@ o conteúdo é adicionado ao final **(concatena)**
    - grupo: ler e executar
    - outros: sem acesso
  
+## Diretórios comuns
+- **/etc:**
+   - é um dos diretórios mais importantes do sistema
+   - a pasta etc é um local comum para armazenar arquivos de sistema usados pelo sistema operacional
+      - arquivos comuns:
+         - sudoers: lista dos usuários ou grupos que têm permissão para executar o comando sudo ou conjunto de comandos como usuário root
+         -  passwd: armazena informações básicas das contas dos usuários, onde cada linha representa um usuário
+             - nome do usuário, user ID (UID), group ID (GID), descrição, diretório home, shell padrão
+         -  shadow: armazena informações sensíveis de autenticação
+             - hash da senha, data e hora da última modificação, validade da senha, tempo mínimo e máximo, período de aviso, bloqueio/expiração da conta
+          
+- **/root:**
+   - é o diretório inicial do usuário root do sistema
+   - diferentemente de usuários comuns, onde os diretórios pessoais ficam em /home, os diretórios pessoais dos superusuários ficam em /root
+ 
+- **/tmp:**
+   - é um diretório raiz exclusivo encontrado em uma instalação do Linux
+   - é volátil, usado para armazenar dados que precisam ser acessados apenas uma ou duas vezes
+      - assim que o computador é reiniciado, o conteúdo dessa pasta é apagado
+   - qualquer usuário pode escrever nessa pasta por padrão -> bom lugar para se guardar scripts de enumeração
+ 
+## Editores de texto de terminal
+- **nano:**
+   - para criar ou editar arquivo: *nano arquivo.txt*
+   - funcionalidades comuns de um editor: pesquisar no texto, copiar e colar, ir para um número de linha, describrir qual linha está
+ 
+- **VIM:**
+   - é um editor muito mais avançado que nano
+   - personalizável
+   - oferece realce de sintaxe
+ 
+## Utilitários gerais
+- **wget:**
+   - usado para baixar arquivos da web via HTTP, como se fosse no navegador
+   - ex: *wget https://assets.tryhackme.com/additional/linux-fundamentals/part3/myfile.txt*
+   - 
